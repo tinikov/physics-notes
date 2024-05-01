@@ -1,0 +1,142 @@
+% !TEX program = xelatex
+\documentclass[10pt,b5paper,openany]{book} %openany: 新章节不强制从奇数页开始
+
+% 调整页边距
+\usepackage{geometry}
+\geometry{right=1.6cm,left=1.6cm,top=2.3cm,bottom=2cm}
+
+% 调整行距
+\usepackage{setspace}
+
+% 设置英文字体
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+% 漂亮的数学字体
+\usepackage{mathpazo} % psnfss 字体宏集之一, Palatino 风格
+
+% ams大礼包
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% slashed letters
+\usepackage{cancel}
+
+% 删除线 波浪线 斜删除线 双下划线
+\usepackage{ulem}
+
+% 输入数组矩阵
+\usepackage{array}
+
+% 输入正体希腊字母
+\usepackage{upgreek}
+
+% 调整参考文献引用格式
+\usepackage{cite}
+
+% 超链接
+\usepackage[colorlinks, linkcolor=black]{hyperref}
+
+% 插入图片等
+\usepackage{graphicx}
+\graphicspath{
+  {./image/}
+}
+
+% 浮动体标题的格式
+\usepackage{caption}
+
+% 给符号加粗用
+\usepackage{bm}
+
+% 命令
+% 长横线
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+
+% 评论使用的框
+\newcommand{\mybox}[1]{ 
+  \begin{center}
+    \framebox[1.15\width][s]{
+      \parbox[t]{32em}{
+
+        \mbox{}
+
+        #1
+
+        \mbox{} \\[-0.8cm]
+
+      }
+    }
+  \end{center}
+}
+
+% 无标号chapter
+\newcommand{\nonumchap}[1]{
+\phantomsection % 加这个命令后, 目录中的超链接才指向正确的页码
+\chapter*{#1} %开始一段不带编号的章
+\addcontentsline{toc}{chapter}{#1} %使目录中以章级别显示
+}
+
+% 无标号section
+\newcommand{\nonumsec}[1]{
+\phantomsection 
+\section*{#1} 
+\addcontentsline{toc}{section}{#1}
+}
+
+% 无标号subsection
+\newcommand{\nonumssec}[1]{
+\phantomsection 
+\subsection*{#1} 
+\addcontentsline{toc}{subsection}{#1}
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+
+  \mbox{}
+
+  {\Huge \textbf{Quick Cheat Sheet}}
+
+  (for fundamentals of physics) \\[0.8cm]
+
+  \HRule \\[0.9cm]
+
+  {\Large  ReEFT} \\[0.3cm]
+
+  {\small \today} \\ [4.6cm]
+
+  {\Huge $\bm{Mechanics}$} \\ [1.6cm]
+
+  {\Huge $\bm{Electrodynamics}$} \\ [1.6cm]
+
+  {\Huge $\bm{Quantum\ Mechanics}$} \\ [1.6cm]
+
+  {\Huge $\bm{Statistical\ Mechanics}$} \\ [1.6cm]
+
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+\clearpage
+
+\begin{spacing}{1.2}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\include{1_mechanics.tex}
+
+\include{2_electrodynamics.tex}
+
+\include{3_quantum_mechanics.tex}
+
+\include{4_statistical_mechanics.tex}
+
+\end{spacing}
+\end{document}
